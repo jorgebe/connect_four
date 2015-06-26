@@ -1,75 +1,30 @@
-$(function() {
-	console.log('Loaded.');
-	bootGame();
-	gameOn();
-});
+var game = {
 
-var bootGame = function () {
+	playerRedName: '',
+	playerBlackName: '',
 
-	$('.location').addClass('empty');
+	numOfRows: 6,
+	numOfColumns: 7,
 
-}
+	grid: [],
 
-var gameOn = function () {
+	reset: function () {
 
-	// var playerRed = prompt("Hello! What's your name?");
+		this.playerRedName = '';
+		this.playerBlackName = '';
 
-	// var playerBlack = prompt("And you, next to " + playerRed + ", what's your name?");
+		this.numOfRows = 6;
+		this.numOfColumns = 7;
 
-	// alert("Great!\n" + playerRed + ", you are the red chips.\n" + playerBlack + ", you are the black chips.");
+		this.grid = [];
+		$('#grid').empty();
 
-	// alert("The game is on!\n" + playerRed + ", you go first.");
+		$('#text-display').empty();
 
-	numOfRows = 6;
-
-	numOfColumns = 7;
-
-	board = [];
-
-
-	var Chip = function (rowPosition, columnPosition) {
-		this.id = 'r' + rowPosition + 'c' + columnPosition;
-		this.rowPos = rowPosition;
-		this.colPos = columnPosition;
-		this.value = "vacant";
-
-		this.isVacant = function () {
-			if (this.value === vacant) {
-				return true
-			}
-		};
-
-		this.toRed = function () {
-			this.value = "red";
-		};
-	
-		this.toBlack = function () {
-			this.value = "black"
+		// remove all the items inside the controllers section of the dashboard
+		// except the fist one, which is the div containing the NEW GAME button
+		for (var i = 1; i < $('#controllers').children().length; i++) {
+			$('#controllers').eq(i).remove()
 		}
-
-		this.toVacant = function () {
-			this.value = "vacant"
-		}
-	}	
-
-
-	var buildRowsAndColumns = function (howManyRows, howManyColumns) {
-
-		for (var i = 0; i < howManyRows ; i++) {
-			board.push([]);
-			$('#board').append( $('<div>').addClass('row') );
-			
-			for (var j = 0; j < howManyColumns; j++) {
-				var rowClass = 'r-' + (i + 1);
-				var columnClass = 'c-' + (j + 1);
-				board[i].push( new Chip(i + 1, j + 1) );
-				$('.row').eq(i).append( $('<div>').addClass(rowClass).addClass(columnClass).addClass('chip') );
-
-			}
-		}
-
 	}
-
-	buildRowsAndColumns(numOfRows,numOfColumns);
 }
-
