@@ -65,13 +65,13 @@ var playersGetNames = function () {
 		$('#controllers').append(playerTurnsMsgButton);
 
 		$(playerTurnsMsgButton).on('click', function () {
-			$('#text-display').html(game.playerAName + ', your turn.');
+			$('#text-display').html(game.playerAName + "'s turn.");
 			$('#controllers').empty();
-			$('#grid').show();
+			// show the #grid-area div that gets hidden in the gridBuilder function
+			$('#grid-area').show();
 			console.log('Dashboard hidden; text display emptied; controllers emptied; grid shown.');
-			gameflow();
+			turns.turnPlayerA();
 		});
 	}
-
 	playerAGetName();
 }
