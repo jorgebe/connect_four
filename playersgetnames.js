@@ -70,7 +70,7 @@ var playersGetNames = function () {
 			// show the #grid-area div that gets hidden in the gridBuilder function
 			$('#grid-area').show();
 			console.log('Dashboard hidden; text display emptied; controllers emptied; grid shown.');
-			turns.turnPlayerA();
+			turns.newTurn();
 		});
 	}
 	playerAGetName();

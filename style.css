@@ -61,9 +61,9 @@ also receive the same styling*/
 
 .chip {
 	float: left;
-	margin: 10px;
-	width: 50px;
-	height: 50px;
+	margin: 8px;
+	width: 52px;
+	height: 52px;
 	border-radius: 50%;
 	background-color: grey;
 }
