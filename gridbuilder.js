@@ -35,6 +35,10 @@ var gridBuilder = function (howManyRows, howManyColumns) {
 			$('.row').eq(i).append( $('<div>').addClass('chip').addClass(rowClass).addClass(columnClass) );
 		}
 	}
+
+	// obtain the winning combinations
+	winningCombos.getCombos();
+
 	// after building our grid in the javascript and on the page (the latter still hidden),
 	// invoke the playersGetNames function
 	playersGetNames();
