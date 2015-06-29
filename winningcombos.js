@@ -4,13 +4,13 @@ var winningCombos = {
 
 	allWinningCombos: [],
 
-	// combosHorizontal: [],
+	combosHorizontal: [],
 
-	// combosVertical: [],
+	combosVertical: [],
 
-	// combosDiagonalTLBR: [],
+	combosDiagonalTLBR: [],
 
-	// combosDiagonalTRBL: [],
+	combosDiagonalTRBL: [],
 
 	getCombos: function () {
 
@@ -35,18 +35,26 @@ var winningCombos = {
 				var horizontalCombo = game.grid[i].slice(j, j + 4);
 
 				// if the array contains exactly four elements
-				// and does not contain undefined elements
-				if ((horizontalCombo.length === 4) 
-					&& (horizontalCombo.indexOf(undefined) === -1)) {
+				if (horizontalCombo.length === 4) {
+
+					// declare an array where the position values of each
+					// of the four consecutive objects will be stored
+					// as arrays each containing four strings
+					var horizontalComboPositions = [];
+
+					// add (push) these arrays of strings to the empty array above
+					for (var x = 0; x < horizontalCombo.length; x++) {
+						horizontalComboPositions.push(horizontalCombo[x].position);
+					}
 
 					// add this array as a winning combination in combosHorizontal
-					// this.combosHorizontal.push(horizontalCombo);
+					this.combosHorizontal.push(horizontalComboPositions);
 
-					// add this array as a winning combination in allWinningCombos
-					this.allWinningCombos.push(horizontalCombo);
+					// add this array of strings as a winning combination in allWinningCombos
+					this.allWinningCombos.push(horizontalComboPositions);
 
 					console.log('Horizontal combo added:');
-					console.log(horizontalCombo);
+					console.log(horizontalComboPositions);
 				}
 			}
 		}
@@ -83,18 +91,26 @@ var winningCombos = {
 				var verticalCombo = column.slice(k, k + 4);
 
 				// if the array contains exactly four elements
-				// and does not contain undefined elements
-				if ((verticalCombo.length === 4) 
-					&& (verticalCombo.indexOf(undefined) === -1)) {
+				if (verticalCombo.length === 4) {
+
+					// declare an array where the position values of each
+					// of the four consecutive objects will be stored
+					// as arrays each containing four strings
+					var verticalComboPositions = [];
+
+					// add (push) these arrays of strings to the empty array above
+					for (var x = 0; x < verticalCombo.length; x++) {
+						verticalComboPositions.push(verticalCombo[x].position);
+					}
 
 					// add this array as a winning combination in combosHorizontal
-					// this.combosVertical.push(verticalCombo);
+					this.combosVertical.push(verticalComboPositions);
 
 					// add this array as a winning combination in allWinningCombos
-					this.allWinningCombos.push(verticalCombo);
+					this.allWinningCombos.push(verticalComboPositions);
 
 					console.log('Vertical combo added:');
-					console.log(verticalCombo);
+					console.log(verticalComboPositions);
 				}
 			}
 		// empty the column
@@ -107,6 +123,10 @@ var winningCombos = {
 		// declare an empty array that will contain
 		// the grid positions found in that diagonal
 		var diagonal = [];
+
+		// where the stringified versions of the diagonal combo arrays 
+		// will be stored to check for duplicates
+		var diagonalComboDuplicateCheck = [];
 
 		// go through each row from top to bottom
 		for (var a = 0; a < game.grid.length; a++) {
@@ -165,19 +185,38 @@ var winningCombos = {
 
 						// if the array contains exactly four elements
 						// and does not contain undefined elements
+						// (the latter is needed because when getting close to the grid's edges,
+						// the diagonals will slice in undefined elements)
 						if ((diagonalCombo.length === 4) 
 							&& (diagonalCombo.indexOf(undefined) === -1)) {
 
+							// declare an array where the position values of each
+							// of the four consecutive objects will be stored
+							// as arrays each containing four strings
+							var diagonalComboPositions = [];
+
+							// add (push) these arrays of strings to the empty array above
+							for (var x = 0; x < diagonalCombo.length; x++) {
+								diagonalComboPositions.push(diagonalCombo[x].position);
+							}
+
+							// if the stringified version of the combo positions array
+							// does not exists in the duplicate-checker array,
+							if (diagonalComboDuplicateCheck.indexOf(diagonalComboPositions.toString()) === -1) {
+
+							// add the stringified version of the combo array 
+							// to the duplicate-checker array
+							diagonalComboDuplicateCheck.push(diagonalComboPositions.toString());
+
 							// add this array as a winning combination in combosDiagonalTLBR
-							// this.combosDiagonalTLBR.push(diagonalCombo);
+							this.combosDiagonalTLBR.push(diagonalComboPositions);
 
 							// add this array as a winning combination in allWinningCombos
-							this.allWinningCombos.push(diagonalCombo);
-						}
-
-						if (diagonalCombo === this.allWinningCombos[this.allWinningCombos.length - 1]) {	
+							this.allWinningCombos.push(diagonalComboPositions);
+	
 							console.log('Diagonal (TL-BR) combo added:');
-							console.log(this.allWinningCombos[this.allWinningCombos.length - 1]);
+							console.log(diagonalComboPositions);
+							}
 						}
 					}
 				// empty the diagonal array	
@@ -192,6 +231,10 @@ var winningCombos = {
 		// declare an empty array that will contain
 		// the grid positions found in that diagonal
 		var diagonal = [];
+
+		// where the stringified versions of the diagonal combo arrays 
+		// will be stored to check for duplicates
+		var diagonalComboDuplicateCheck = [];
 
 		// go through each row from top to bottom
 		for (var a = 0; a < game.grid.length; a++) {
@@ -247,19 +290,38 @@ var winningCombos = {
 
 						// if the array contains exactly four elements
 						// and does not contain undefined elements
+						// (the latter is needed because when getting close to the grid's edges,
+						// the diagonals will slice in undefined elements)
 						if ((diagonalCombo.length === 4) 
 							&& (diagonalCombo.indexOf(undefined) === -1)) {
 
+							// declare an array where the position values of each
+							// of the four consecutive objects will be stored
+							// as arrays each containing four strings
+							var diagonalComboPositions = [];
+
+							// add (push) these arrays of strings to the empty array above
+							for (var x = 0; x < diagonalCombo.length; x++) {
+								diagonalComboPositions.push(diagonalCombo[x].position);
+							}
+
+							// if the stringified version of the combo positions array
+							// does not exists in the duplicate-checker array,
+							if (diagonalComboDuplicateCheck.indexOf(diagonalComboPositions.toString()) === -1) {
+
+							// add the stringified version of the combo array 
+							// to the duplicate-checker array
+							diagonalComboDuplicateCheck.push(diagonalComboPositions.toString());
+
 							// add this array as a winning combination in combosDiagonalTRBL
-							// this.combosDiagonalTRBL.push(diagonalCombo);
+							this.combosDiagonalTRBL.push(diagonalComboPositions);
 
 							// add this array as a winning combination in allWinningCombos
-							this.allWinningCombos.push(diagonalCombo);
-						}
-
-						if (diagonalCombo === this.combos[this.allWinningCombos.length - 1]) {	
+							this.allWinningCombos.push(diagonalComboPositions);
+	
 							console.log('Diagonal (TR-BL) combo added:');
-							console.log(this.allWinningCombos[this.allWinningCombos.length - 1]);
+							console.log(diagonalComboPositions);
+							}
 						}
 					}
 				// empty the diagonal array	

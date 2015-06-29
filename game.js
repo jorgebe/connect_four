@@ -3,7 +3,7 @@ var game = {
 	playerAName: '',
 	playerBName: '',
 
-	// default number of row and column
+	// default number of rows and columns
 	numOfRows: 6,
 	numOfColumns: 7,
 
