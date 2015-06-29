@@ -169,7 +169,7 @@ var winningCombos = {
 							&& (diagonalCombo.indexOf(undefined) === -1)) {
 
 							// add this array as a winning combination in combosDiagonalTLBR
-							this.combosDiagonalTLBR.push(diagonalCombo);
+							// this.combosDiagonalTLBR.push(diagonalCombo);
 
 							// add this array as a winning combination in allWinningCombos
 							this.allWinningCombos.push(diagonalCombo);
