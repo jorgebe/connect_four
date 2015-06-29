@@ -4,15 +4,19 @@ var turns = {
 
 	whoseTurn: '',
 
+	whichColor: '',
+
 	chipClicked: undefined,
 
 	determineWhoseTurn: function () {
-		// if totalGameMoves is an even number excluding 0, it's playerB's turn;
+		// if totalGameMoves is an even number, it's playerB's turn;
 		// if totalGameMoves is an odd number, it's playerA's turn,
 		if (this.totalGameMoves % 2 === 0) {
-			this.whoseTurn = 'playerB';
+			this.whoseTurn = game.playerBName;
+			this.whichColor = game.playerBColor;
 		} else {
-			this.whoseTurn = 'playerA';
+			this.whoseTurn = game.playerAName;
+			this.whichColor = game.playerAColor;
 		}
 	},
 
@@ -20,16 +24,27 @@ var turns = {
 
 		console.log('turns.newTurn function invoked.');
 
-		this.determineWhoseTurn();
+		if (gameOver.isOver) {
 
-		console.log('Turn of ' + this.whoseTurn);
+			gameOver.overMessage();
 
-		$('.chip').unbind('click');
+		} else {
 
-		$('.chip').on('click', function() {
-			turns.chipClicked = this;
-			turns.dropChip();
-		} );
+			this.determineWhoseTurn();
+
+			$('#text-display').html(this.whoseTurn + "'s turn");
+
+			console.log('Turn of ' + this.whoseTurn);
+
+			gameOver.checkForWin();
+
+			$('.chip').unbind('click');
+
+			$('.chip').on('click', function() {
+				turns.chipClicked = this;
+				turns.dropChip();
+			});
+		}
 	},
 
 	dropChip: function () {
@@ -77,7 +92,7 @@ var turns = {
 			// but only check in the column aka array index (columnClicked - 1) clicked on
 			if (game.grid[i][columnClicked - 1].value === 'vacant') {
 
-				if (this.whoseTurn === 'playerA') {
+				if (this.whoseTurn === game.playerAName) {
 
 					console.log('Checking for ' + this.whoseTurn +' if position in row ' + (i + 1) + ', column ' + columnClicked + ', is vacant.');
 					
@@ -91,7 +106,7 @@ var turns = {
 
 					break;
 					
-				} else if (this.whoseTurn === 'playerB') {
+				} else if (this.whoseTurn === game.playerBName) {
 
 					console.log('Checking for ' + this.whoseTurn +' if position in row ' + (i + 1) + ', column ' + columnClicked + ', is vacant.');
 					

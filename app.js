@@ -4,7 +4,7 @@ $(function() {
 	console.log('Connect Four loaded.');
 
 	game.reset();
-
+	
 	$('#newgame-button').click(gridSizeSelect);
 
 });

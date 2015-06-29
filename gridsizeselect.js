@@ -3,7 +3,8 @@ var gridSizeSelect = function () {
 	console.log('gridSizeSelect function invoked.');
 
 	// hide the <div> containing the NEW GAME button from the text display
-	$('#newgame-button-div').hide();
+	newGameButtonDiv = $('#newgame-button-div');
+	$(newGameButtonDiv).hide();
 
 	// create a <select> tag that will display a drop-down menu of options
 	var gridSizeSelector = $('<select>').attr('id', 'gridsize-selector').attr('class', 'selector');

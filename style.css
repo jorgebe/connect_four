@@ -1,7 +1,6 @@
 body {
 	font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
-/*	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-*/}
+}
 
 input {
 	font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
@@ -20,6 +19,10 @@ button {
 }
 
 #game-area {
+	position: absolute;
+	min-width: 470px;
+	left: 200px;
+	top: 20px;
 	float: left;
 	background-color: beige;
 	padding: 10px;
@@ -30,15 +33,17 @@ is because input tags of the button type
 also receive the same styling*/
 
 #dashboard {
+	width: 100%;
+	clear: left;
+	position: relative;
 	float: left;
-	padding: 10px;
-	background-color: indigo;
+	padding: 10px 0;
+	background-color: black;
 	text-align: center;
 }
 
 #grid-area {
 	float: left;
-	margin: 0 10px 0 0;
 }
 
 #grid {
@@ -50,13 +55,13 @@ also receive the same styling*/
 	font-size: 20px;
 	margin: 0 5px;
 	color: white;
-	background-color: indigo;
+	background-color: black;
 }
 
 .row {
 	float: left;
 	clear: left;
-	background-color: blue;
+	background-color: midnightblue;
 }
 
 .chip {
@@ -69,11 +74,11 @@ also receive the same styling*/
 }
 
 .chip-red {
-	background-color: red;
+	background-color: crimson;
 }
 
 .chip-yellow {
-	background-color: yellow;
+	background-color: khaki;
 }
 
 .empty {
@@ -99,7 +104,7 @@ also receive the same styling*/
 	margin: 0 5px;
 	color: white;
 	border: none;
-	background-color: indigo;
+	background-color: black;
 }
 
 .input-texttype {
@@ -107,5 +112,5 @@ also receive the same styling*/
 	height: 26px;
 	margin: 0 5px;
 	color: white;
-	background-color: indigo;
+	background-color: black;
 }

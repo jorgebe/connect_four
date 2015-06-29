@@ -16,7 +16,7 @@ var playersGetNames = function () {
 
 		$(playerANameButton).on('click', function () {
 			if (playerANameInput.val() === '') {
-				game.playerAName = 'Player A';
+				game.playerAName = 'Red';
 			} else {
 				game.playerAName = playerANameInput.val();
 			}
@@ -43,7 +43,7 @@ var playersGetNames = function () {
 
 		$(playerBNameButton).on('click', function () {
 			if (playerBNameInput.val() === '') {
-				game.playerBName = 'Player B';
+				game.playerBName = 'Yellow';
 			} else {
 				game.playerBName = playerBNameInput.val();
 			}
@@ -65,7 +65,7 @@ var playersGetNames = function () {
 		$('#controllers').append(playerTurnsMsgButton);
 
 		$(playerTurnsMsgButton).on('click', function () {
-			$('#text-display').html(game.playerAName + "'s turn.");
+			$('#text-display').html(game.playerAName + "'s turn");
 			$('#controllers').empty();
 			// show the #grid-area div that gets hidden in the gridBuilder function
 			$('#grid-area').show();

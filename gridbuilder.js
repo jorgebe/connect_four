@@ -28,12 +28,11 @@ var gridBuilder = function (howManyRows, howManyColumns) {
 
 			var rowClass = 'row_' + row;
 			var columnClass = 'col_' + column;
-			var positionId = 'row_' + row + '-' + 'col_' + column;
 
 			// in javascript
 			game.grid[i].push( new Chip(row, column) );
 			// on the page
-			$('.row').eq(i).append( $('<div>').attr('id', positionId).addClass('chip').addClass(rowClass).addClass(columnClass) );
+			$('.row').eq(i).append( $('<div>').addClass('chip').addClass(rowClass).addClass(columnClass) );
 		}
 	}
 

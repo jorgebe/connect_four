@@ -1,8 +1,6 @@
 var winningCombos = {
 
-	combos: [],
-
-	allWinningCombos: [],
+	allCombos: [],
 
 	combosHorizontal: [],
 
@@ -47,14 +45,14 @@ var winningCombos = {
 						horizontalComboPositions.push(horizontalCombo[x].position);
 					}
 
-					// add this array as a winning combination in combosHorizontal
+					// add this array of strings as a winning combination in combosHorizontal
 					this.combosHorizontal.push(horizontalComboPositions);
 
-					// add this array of strings as a winning combination in allWinningCombos
-					this.allWinningCombos.push(horizontalComboPositions);
+					// add the array of chip objects as winning combination in allCombos
+					this.allCombos.push(horizontalCombo);
 
 					console.log('Horizontal combo added:');
-					console.log(horizontalComboPositions);
+					console.log(horizontalCombo);
 				}
 			}
 		}
@@ -103,14 +101,14 @@ var winningCombos = {
 						verticalComboPositions.push(verticalCombo[x].position);
 					}
 
-					// add this array as a winning combination in combosHorizontal
+					// add this array of strings as a winning combination in combosHorizontal
 					this.combosVertical.push(verticalComboPositions);
 
-					// add this array as a winning combination in allWinningCombos
-					this.allWinningCombos.push(verticalComboPositions);
+					// add the array of chip objects as winning combination in allCombos
+					this.allCombos.push(verticalCombo);
 
 					console.log('Vertical combo added:');
-					console.log(verticalComboPositions);
+					console.log(verticalCombo);
 				}
 			}
 		// empty the column
@@ -208,14 +206,14 @@ var winningCombos = {
 							// to the duplicate-checker array
 							diagonalComboDuplicateCheck.push(diagonalComboPositions.toString());
 
-							// add this array as a winning combination in combosDiagonalTLBR
+							// add this array of strings as a winning combination in combosDiagonalTLBR
 							this.combosDiagonalTLBR.push(diagonalComboPositions);
 
-							// add this array as a winning combination in allWinningCombos
-							this.allWinningCombos.push(diagonalComboPositions);
+							// add the array of chip objects as winning combination in allCombos
+							this.allCombos.push(diagonalCombo);
 	
 							console.log('Diagonal (TL-BR) combo added:');
-							console.log(diagonalComboPositions);
+							console.log(diagonalCombo);
 							}
 						}
 					}
@@ -313,14 +311,14 @@ var winningCombos = {
 							// to the duplicate-checker array
 							diagonalComboDuplicateCheck.push(diagonalComboPositions.toString());
 
-							// add this array as a winning combination in combosDiagonalTRBL
+							// add this array of strings as a winning combination in combosDiagonalTRBL
 							this.combosDiagonalTRBL.push(diagonalComboPositions);
 
-							// add this array as a winning combination in allWinningCombos
-							this.allWinningCombos.push(diagonalComboPositions);
+							// add the array of chip objects as winning combination in allCombos
+							this.allCombos.push(diagonalCombo);
 	
 							console.log('Diagonal (TR-BL) combo added:');
-							console.log(diagonalComboPositions);
+							console.log(diagonalCombo);
 							}
 						}
 					}
